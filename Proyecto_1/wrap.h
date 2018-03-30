@@ -3,8 +3,14 @@
 #define OPERADOR 3
 #define TIPO 4
 #define IDENTIFICADOR 5
-#define CONSTANTE 6
-#define PREDETERMINADO 7
-#define COMENTARIO 8
-#define CONTROL 9
-#define ERROR 10
+#define PREDETERMINADO 6
+#define COMENTARIO 7
+#define CONTROL 8
+#define ERROR 9
+#define TEXTO 10
+#define NWL 11
+#define ESP 12
+#define VALOR 13
+
+void ToLowerCase(char * word);
+void ToUpperCase(char * word);

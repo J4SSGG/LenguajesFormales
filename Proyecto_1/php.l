@@ -85,6 +85,8 @@ OPB		"++"|"--"
 {VAR}	return VARIABLE;
 {VAR}{ESP}{OPA}{ESP}{ALL}	return VARIABLE;
 {OPB}?{VAR}|{VAR}{OPB}?	return VARIABLE;
+[[cC][oO][nN][sS][tT]]?{ESP}{VAR}	return ERROR;
+[[cC][oO][nN][sS][tT]]?{ESP}{VAR}{ESP}{OPA}{ESP}{ALL}	return CONSTANTE;
 {OPA}	return OPERADOR;
 {OPB}	return OPERADOR;
 \"{ALL}\"	return ERROR;

@@ -35,6 +35,24 @@ int main(int ac, char ** av) {
 		case PREDETERMINADO:
 				printf("Line :  %d ;  Predeterminado  :  %s\n", yylineno, yytext);
 				break;
+		case OPERADOR:
+				printf("Line :  %d ;  Operador  :  %s\n", yylineno, yytext);
+				break;
+		case TIPO:
+				printf("Line :  %d ;  Tipo  :  %s\n", yylineno, yytext);
+				break;
+		case IDENTIFICADOR:
+				printf("Line :  %d ;  Identificador  :  %s\n", yylineno, yytext);
+				break;
+		case CONSTANTE:
+				printf("Line :  %d ;  Constante  :  %s\n", yylineno, yytext);
+				break;
+		case CONTROL:
+				printf("Line :  %d ;  Control  :  %s\n", yylineno, yytext);
+				break;
+		case ERROR:
+				printf("Line :  %d ;  Error  :  %s\n", yylineno, yytext);
+				break;
 		}
 		value = yylex();
 	}

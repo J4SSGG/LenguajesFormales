@@ -2,7 +2,8 @@
 #include "wrap.h"
 %}
 ALL		.*
-ESP		[\t|\n|\r|\s]+
+ESP		[[ \n\t\r]+]*
+NWL		[^.]*
 VAR		"$"[a-zA-Z_][a-zA-Z0-9_]*
 INT		[0-9]+
 DEC		[0-9]*"."[0-9]*
@@ -17,7 +18,7 @@ OPB		"++"|"--"
 "/*"{ALL}"*/"?	 	return COMENTARIO;
 [aA][bB][sS][tT][rR][aA][cC][tT]        return RESERVADO;
 [aA][nN][dD]    return RESERVADO;
-[aA][rR][rR][aA][yY]"("{ESP}*[{ALL}*|{ESP}*]{ESP}*")"    return RESERVADO;
+[aA][rR][rR][aA][yY]["("]{NWL}{ALL}{NWL}[")"]    return RESERVADO;
 [aA][sS]        return RESERVADO;
 [bB][rR][eE][aA][kK]    return RESERVADO;
 [cC][aA][lL][lL][aA][bB][lL][eE]        return RESERVADO;
@@ -29,21 +30,21 @@ OPB		"++"|"--"
 [cC][oO][nN][tT][iI][nN][uU][eE]        return RESERVADO;
 [dD][eE][cC][lL][aA][rR][eE]    return RESERVADO;
 [dD][eE][fF][aA][uU][lL][tT]    return RESERVADO;
-[dD][eE][fF][iI][nN][eE]"("{ALL}|[\n]*")"   return RESERVADO;
-[dD][iI][eE]"("{ALL}*|{ESP}*")"    return RESERVADO;
+[dD][eE][fF][iI][nN][eE]["("]{NWL}{ALL}{NWL}[")"]   return RESERVADO;
+[dD][iI][eE]["("][{ALL}*|{NWL}*]*[")"]    return RESERVADO;
 [dD][oO]        return RESERVADO;
 [eE][cC][hH][oO]        return RESERVADO;
 [eE][lL][sS][eE]        return RESERVADO;
 [eE][lL][sS][eE][iI][fF]        return RESERVADO;
-[eE][mM][pP][tT][yY]"("{ALL}*|{ESP}*")"    return RESERVADO;
+[eE][mM][pP][tT][yY]["("]{NWL}{ALL}{NWL}[")"]    return RESERVADO;
 [eE][nN][dD][dD][eE][cC][lL][aA][rR][eE]        return RESERVADO;
 [eE][nN][dD][fF][oO][rR]        return RESERVADO;
 [eE][nN][dD][fF][oO][rR][eE][aA][cC][hH]        return RESERVADO;
 [eE][nN][dD][iI][fF]    return RESERVADO;
 [eE][nN][dD][sS][wW][iI][tT][cC][hH]    return RESERVADO;
 [eE][nN][dD][wW][hH][iI][lL][eE]        return RESERVADO;
-[eE][vV][aA][lL]"("{ALL}*|{ESP}*")"       return RESERVADO;
-[eE][xX][iI][tT]"("{ALL}*|{ESP}*")"        return RESERVADO;
+[eE][vV][aA][lL]["("]{NWL}{ALL}{NWL}[")"]       return RESERVADO;
+[eE][xX][iI][tT]["("]{NWL}{ALL}{NWL}[")"]        return RESERVADO;
 [eE][xX][tT][eE][nN][dD][sS]    return RESERVADO;
 [fF][iI][nN][aA][lL]    return RESERVADO;
 [fF][iI][nN][aA][lL][lL][yY]    return RESERVADO;
@@ -59,8 +60,8 @@ OPB		"++"|"--"
 [iI][nN][sS][tT][aA][nN][cC][eE][oO][fF]        return RESERVADO;
 [iI][nN][sS][tT][eE][aA][dD][oO][fF]    return RESERVADO;
 [iI][nN][tT][eE][rR][fF][aA][cC][eE]    return RESERVADO;
-[iI][sS][sS][eE][tT]"("{ALL}*|{ESP}*")"    return RESERVADO;
-[lL][iI][sS][tT]"("{ALL}*|{ESP}*")"       return RESERVADO;
+[iI][sS][sS][eE][tT]["("]{NWL}{ALL}{NWL}[")"]    return RESERVADO;
+[lL][iI][sS][tT]["("]{NWL}{ALL}{NWL}[")"]       return RESERVADO;
 [nN][eE][wW]    return RESERVADO;
 [oO][rR]        return RESERVADO;
 [pP][rR][iI][nN][tT]    return RESERVADO;
@@ -75,17 +76,19 @@ OPB		"++"|"--"
 [tT][hH][rR][oO][wW]    return RESERVADO;
 [tT][rR][aA][iI][tT]    return RESERVADO;
 [tT][rR][yY]    return RESERVADO;
-[uU][nN][sS][eE][tT]"("{ALL}*|{ESP}*")"    return RESERVADO;
+[uU][nN][sS][eE][tT]["("]{NWL}{ALL}{NWL}[")"]    return RESERVADO;
 [uU][sS][eE]    return RESERVADO;
 [vV][aA][rR]    return RESERVADO;
 [wW][hH][iI][lL][eE]    return RESERVADO;
 [xX][oO][rR]    return RESERVADO;
 [yY][iI][eE][lL][dD]    return RESERVADO;
 {VAR}	return VARIABLE;
+{VAR}{ESP}{OPA}{ESP}{ALL}	return VARIABLE;
+{OPB}?{VAR}|{VAR}{OPB}?	return VARIABLE;
 {OPA}	return OPERADOR;
 {OPB}	return OPERADOR;
-\"{ALL}\"	return TEXTO;
-{ALL}	return TEXTO;
+\"{ALL}\"	return ERROR;
+{ALL}	return ERROR;
 %%
 int yywrap(void)
 {

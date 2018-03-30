@@ -7,4 +7,4 @@
 #define PREDETERMINADO 7
 #define COMENTARIO 8
 #define CONTROL 9
-#define TEXTO 10
+#define ERROR 10

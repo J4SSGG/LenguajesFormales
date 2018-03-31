@@ -2,6 +2,7 @@
 #include <ctype.h>
 #include <string.h>
 #include "wrap.h"
+#include "LinkedList.c"
 
 extern int yylex();
 extern int line;
@@ -16,7 +17,7 @@ int main(int ac, char ** av) {
 		FILE *fd;
 		if (!(fd = fopen(av[1], "r"))) // Checks if file exits and is readable...
 		{
-			perror("Error: ");
+			perror("Error al abrir archivo.");
 			return -1;
 		}
 		// Set the file reference to flex.
@@ -25,60 +26,93 @@ int main(int ac, char ** av) {
 
 	// Some control variables..
 	int value = yylex(); // value (or token if applicable) returned by flex
-	int line = 0 // input-lines counter
+	int line = 0; // input-lines counter
 
 	// This loop iterates over every line read from the file, pass the line content to flex, and catch the outputs.
 	while (value) {
 		line++;
 		switch (value){
 			case VARIABLE:
-				printf("Line :  %d ; Variable :  %s\n", line, yytext);
+				printf("Line %d >	  Variable :		%s\n", line, yytext);
+				insertFirst(line, yytext);
 				break;
 			case RESERVADO:
 				ToLowerCase(yytext);
-				printf("Line :  %d ;  Reservado :  %s\n", line, yytext);
+				printf("Line %d >	  Reservado :		%s\n", line, yytext);
+				insertFirst(line, yytext);
 				break;
 			case COMENTARIO:
-				printf("Line :  %d ;  Comentario :  %s\n", line, yytext);
+				printf("Line %d >	  Comentario :		%s\n", line, yytext);
+				insertFirst(line, yytext);
 				break;
 			case PREDETERMINADO:
 				ToUpperCase(yytext);
-				printf("Line :  %d ;  Predeterminado  :  %s\n", line, yytext);
+				printf("Line %d >	  Predeterminado :		%s\n", line, yytext);
+				insertFirst(line, yytext);
 				break;
 			case OPERADOR:
-				printf("Line :  %d ;  Operador  :  %s\n", line, yytext);
+				printf("Line %d >	  Operador :		%s\n", line, yytext);
+				insertFirst(line, yytext);
 				break;
 			case TIPO:
 				ToLowerCase(yytext);
-				printf("Line :  %d ;  Tipo  :  %s\n", line, yytext);
+				printf("Line %d >	  Tipo :		%s\n", line, yytext);
+				insertFirst(line, yytext);
 				break;
 			case IDENTIFICADOR:
 				ToLowerCase(yytext);
-				printf("Line :  %d ;  Identificador  :  %s\n", line, yytext);
+				printf("Line %d >	  Identificador :		%s\n", line, yytext);
+				insertFirst(line, yytext);
 				break;
 			case CONTROL:
-				printf("Line :  %d ;  Control  :  %s\n", line, yytext);
+				printf("Line %d >	  Control :		%s\n", line, yytext);
+				insertFirst(line, yytext);
 				break;
 			case ERROR:
-				printf("Line :  %d ;  Error  :  %s\n", line, yytext);
+				printf("Line %d >	  Error :		%s\n", line, yytext);
+				insertFirst(line, yytext);
 				break;
 			case TEXTO:
-				printf("Line :  %d ;  Texto  :  %s\n", line, yytext);
+				printf("Line %d >	  Texto :		%s\n", line, yytext);
+				insertFirst(line, yytext);
 				break;
 			case NWL:
-				printf("Line :  %d ;  Salto de Linea\n", line);
+				printf("Line %d >	  Salto de linea ;\n", line);
+				insertFirst(line, "\n");
 				break;
 			case ESP:
-				printf("Line :  %d ;  Espacio\n", line);
+				printf("Line %d >	  Espacio ;\n", line);
+				insertFirst(line, " ");
 				break;
 			case VALOR:
 				ToLowerCase(yytext);
-				printf("Line :  %d ;  Valor  :  %s\n", line, yytext);
+				printf("Line %d >	  Valor  :		%s\n", line, yytext);
+				insertFirst(line, yytext);
 				break;
 		}
+		
 		value = yylex();
 	}
+	reverse(&head);
+	printList();
 
+	// Write php file ...
+	
+	char * newName = malloc(strlen(av[1]+2));
+	strcpy(newName, "_");
+	strcat(newName, av[1]);
+
+	FILE * fd;
+	if (!(fd = fopen(newName, "wb")))
+	{
+		printf("Error al abrir archivo.");
+		return -1;
+	}
+	
+	for(int i = 1; i <= length(); i++){
+		fprintf(fd, "%s", find(i)->data);
+	}
+	fclose(fd);
 	return 1;
 }
 

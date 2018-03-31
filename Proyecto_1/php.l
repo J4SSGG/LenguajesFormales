@@ -2,7 +2,7 @@
 #include "wrap.h"
 %}
 ALL		.*
-ESP		[[ \n\t\r]+]*
+ESP		[ \n\t\r]+
 NWL		[\n]*
 JMP		[^.]*
 VAR		"$"[a-zA-Z_][a-zA-Z0-9_]*
@@ -11,9 +11,9 @@ DEC		"+-"*[0-9]*"."[0-9]*
 BOOL	[tT][rR][uU][eE]|[fF][aA][lL][sS][eE]
 INIT	"<?"[pP][hH][pP]
 END		"?>"
-OPA		"="|"+"|"-"|"*"|"/"|"%"|"<"|">"|"<="|">="|"<>"|"=="|"==="|"!=="|"!="|"."|"&&"|"\|\|"|[aA][nN][dD]|[oO][rR]|[xX][oO][rR]|"+="|"-="|"*="|"/="|".="|"&"	
-OPB		"++"|"--"
-PTS		"("|")"|"{"|"}"|";"|","|"."
+OPA		"="|"+"|"-"|"*"|"/"|"%"|"<"|">"|"<="|">="|"<>"|"=="|"==="|"!=="|"!="|"."|"&&"|\|\||[aA][nN][dD]|[oO][rR]|[xX][oO][rR]|"+="|"-="|"*="|"/="|".="|"&"	
+OPB		"++"|"--"|"=>"
+PTS		"("|")"|"{"|"}"|";"|","|"."|"\["|"\]"|"?"|":"|";"
 STC		[dD][oO][uU][bB][lL][eE]|[iI][nN][tT]|[sS][tT][rR][iI][nN][gG]|[fF][lL][oO][aA][tT]|[bB][oO][oO][lL]
 CTRA	[iI][fF]|[eE][lL][sS][eE]["_"][iI][fF]|[eE][lL][sS][eE][iI][fF]|[wW][hH][iI][lL][eE]|[fF][oO][rR]|[fF][oO][rR][eE][aA][cC][hH]|[sS][wW][iI][tT][cC][hH]
 CTRB	[rR][eE][tT][uU][rR][nN]|[dD][oO]|[cC][aA][sS][eE]|[bB][rR][eE][aA][kK]|[gG][oO][tT][oO]|[eE][lL][sS][eE]|[iI][nN][cC][lL][uU][dD][eE]|[iI][nN][cC][lL][uU][dD][eE]["_"][oO][nN][cC][eE]|[cC][oO][nN][tT][iI][nN][uU][eE]
@@ -36,7 +36,7 @@ ERR		[A-Za-z0-9"_""."]*
 "$"[aA][rR][gG][cC]        return IDENTIFICADOR;
 "$"[aA][rR][gG][vV]        return IDENTIFICADOR;
 "//"{ALL} 	return COMENTARIO;
-"/*"{JMP}{ALL}{JMP}"*/"?	 	return COMENTARIO;
+"/*"{JMP}{ALL}{JMP}"*/"	 	return COMENTARIO;
 [aA][bB][sS][tT][rR][aA][cC][tT]       return RESERVADO;
 [aA][nN][dD]    return RESERVADO;
 [aA][rR][rR][aA][yY]   return RESERVADO;
@@ -73,6 +73,7 @@ ERR		[A-Za-z0-9"_""."]*
 [iI][sS][sS][eE][tT]    return RESERVADO;
 [lL][iI][sS][tT]       return RESERVADO;
 [nN][eE][wW]    return RESERVADO;
+[nN][uU][lL][lL]    return RESERVADO;
 [pP][hH][pP]["_"][vV][eE][rR][sS][iI][oO][nN]	return RESERVADO;
 [pP][rR][iI][nN][tT]    return RESERVADO;
 [pP][rR][iI][vV][aA][tT][eE]    return RESERVADO;
@@ -92,13 +93,13 @@ ERR		[A-Za-z0-9"_""."]*
 {VAR}	return VARIABLE;
 {OPA}	return OPERADOR;
 {OPB}	return OPERADOR;
+{PTS}	return OPERADOR;
 {NWL}	return NWL;
 {ESP}	return ESP;
 {CTRA} 	return CONTROL;
 {CTRB}	return RESERVADO;
-{PTS}	return OPERADOR;
 {INT}|{DEC}|{BOOL}	return VALOR;
-\"{ALL}\"|"'"{ALL}"'"	return TEXTO;
+\"{ALL}\"|\'{ALL}\'	return TEXTO;
 "$"[0-9][a-zA-Z0-9_]*	return ERROR;
 {ERR}	return ERROR;
 %%

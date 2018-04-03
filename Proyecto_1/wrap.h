@@ -12,5 +12,10 @@
 #define ESP 12
 #define VALOR 13
 
+extern int yylex();
+extern int line;
+extern char * yytext;
+extern void yyset_in(FILE * in_str);
+
 void ToLowerCase(char * word);
 void ToUpperCase(char * word);

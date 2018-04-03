@@ -99,6 +99,7 @@ ERR		[A-Za-z0-9"_""."]*
 {CTRA} 	return CONTROL;
 {CTRB}	return RESERVADO;
 {INT}|{DEC}|{BOOL}	return VALOR;
+[fF][uU][nN][cC][tT][iI][oO][nN]{ESP}[a-zA-z]*	return CONTROL;
 \"{ALL}\"|\'{ALL}\'	return TEXTO;
 "$"[0-9][a-zA-Z0-9_]*	return ERROR;
 {ERR}	return ERROR;

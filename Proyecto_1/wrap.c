@@ -4,10 +4,6 @@
 #include "wrap.h"
 #include "LinkedList.c"
 
-extern int yylex();
-extern int line;
-extern char * yytext;
-extern void yyset_in(FILE * in_str);
 
 int main(int ac, char ** av) {
 	// Checks if file is given...

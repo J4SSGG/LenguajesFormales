@@ -7,22 +7,35 @@
 
 int main(int ac, char ** av) {
 	// Checks if file is given...
+	
 	if (ac == 2)
 	{
 		// Creates file object...
-		FILE *fd;
-		if (!(fd = fopen(av[1], "r"))) // Checks if file exits and is readable...
+		FILE *fr;
+		if (!(fr = fopen(av[1], "r"))) // Checks if file exits and is readable...
 		{
 			perror("Error al abrir archivo.");
 			return -1;
 		}
 		// Set the file reference to flex.
-		yyset_in(fd); 
+		yyset_in(fr); 
 	}
 
 	// Some control variables..
 	int value = yylex(); // value (or token if applicable) returned by flex
 	int token = 0; // input-lines counter
+	int hasError = 0; // errors in file?
+
+	// Creates a temporary error file...
+
+	char * errorFile = malloc(strlen(av[1]));
+	strcpy(errorFile, av[1]);
+	errorFile[strlen(av[1])-3] = 't';
+	errorFile[strlen(av[1])-2] = 'm';
+	errorFile[strlen(av[1])-1] = 'p';
+	FILE * fe = fopen(errorFile, "wb");
+	fclose(fe);
+
 	// This loop iterates over every line read from the file, pass the line content to flex, and catch the outputs.
 	while (value) {
 		token++;
@@ -66,14 +79,17 @@ int main(int ac, char ** av) {
 				break;
 			case ERROR:
 				printf("ERROR IN LINE %d  ->  %s\n", yylineno, yytext);
-				insertFirst(token, yytext);
+				hasError = 1;
+				fe = fopen(errorFile, "a");
+				fprintf(fe, "ERROR IN LINE %d  ->  %s\n", yylineno, yytext);
+				fclose(fe);
 				break;
 			case TEXTO:
 				printf("Line %d >	  Texto :		%s\n", yylineno, yytext);
 				insertFirst(token, yytext);
 				break;
 			case NWL:
-				printf("Line %d >	  Salto de linea ;\n", yylineno);
+				printf("Line %i >	  Salto de linea ;\n", yylineno);
 				insertFirst(token, "\n");
 				break;
 			case ESP:
@@ -98,8 +114,14 @@ int main(int ac, char ** av) {
 		
 		value = yylex();
 	}
-	reverse(&head);
-	
+	// File had errors?
+	if (hasError == 1){
+		printf ("Errors where found in file %s", av[1]);
+		return 1;
+	}
+
+	// No errors, then remove file.
+	remove(errorFile);
 	// Write php file ...
 	
 	char * newName = malloc(strlen(av[1]));
@@ -107,18 +129,17 @@ int main(int ac, char ** av) {
 	newName[strlen(av[1])-3] = 'o';
 	newName[strlen(av[1])-2] = 'u';
 	newName[strlen(av[1])-1] = 't';
-
-	FILE * fd;
-	if (!(fd = fopen(newName, "wb")))
+	FILE * fw;
+	if (!(fw = fopen(newName, "wb")))
 	{
 		printf("Error al abrir archivo.");
 		return -1;
 	}
 	
 	for(int i = 1; i <= length(); i++){
-		fprintf(fd, "%s", find(i)->data);
+		fprintf(fw, "%s", find(i)->data);
 	}
-	fclose(fd);
+	fclose(fw);
 
 	return 1;
 }

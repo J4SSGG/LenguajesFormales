@@ -5,17 +5,17 @@
 ALL		.*
 ESP		[ \t\r]+
 NWL		[\n]*
-VAR		"$"[a-zA-Z_\x7F-\xFF][a-zA-Z0-9_]*
+VAR		"$"[a-zA-Z_\x7F-\xFF][a-zA-Z0-9_\x7F-\xFF]*
 INT		"+-"*[0-9]+
 DEC		"+-"*[0-9]*"."[0-9]*
 BOOL	[tT][rR][uU][eE]|[fF][aA][lL][sS][eE]
 INIT	"<?"[pP][hH][pP]
 END		"?>"
-OPA		"="|"+"|"-"|"*"|"/"|"%"|"<"|">"|"<="|">="|"<>"|"=="|"==="|"!=="|"!="|"."|"&&"|\|\||[aA][nN][dD]|[oO][rR]|[xX][oO][rR]|"+="|"-="|"*="|"/="|".="|"&"|"!"
-OPB		"++"|"--"|"=>"|"->"|"@"
+OPA		"="|"+"|"-"|"*"|"/"|"%"|"<"|">"|"<="|">="|"<>"|"=="|"==="|"!=="|"!="|"."|"&&"|"||"|[aA][nN][dD]|[oO][rR]|[xX][oO][rR]|"+="|"-="|"*="|"/="|".="|"&"|"!"
+OPB		"++"|"--"|"=>"|"->"|"@"|"&"|"|"|"^"|"~"|"<<"|">>"|"<==>"|"??"|"`"|"**"
 PTS		"("|")"|"{"|"}"|";"|","|"["|"]"|"?"|":"|";"
-STC		[dD][oO][uU][bB][lL][eE]|[iI][nN][tT]|[sS][tT][rR][iI][nN][gG]|[fF][lL][oO][aA][tT]|[bB][oO][oO][lL]
-CTRA	[iI][fF]|[eE][lL][sS][eE][_][iI][fF]|[eE][lL][sS][eE][iI][fF]|[wW][hH][iI][lL][eE]|[fF][oO][rR]|[fF][oO][rR][eE][aA][cC][hH]|[sS][wW][iI][tT][cC][hH]
+STC		[dD][oO][uU][bB][lL][eE]|[iI][nN][tT]|[sS][tT][rR][iI][nN][gG]|[fF][lL][oO][aA][tT]|[bB][oO][oO][lL]|[rR][eE][aA][lL]|[bB][oO][oO][lL][eE][aA][nN]|[iI][nN][tT][eE][gG][eE][rR]
+CTRA	[iI][fF]|[eE][lL][sS][eE][_][iI][fF]|[eE][lL][sS][eE][iI][fF]|[wW][hH][iI][lL][eE]|[fF][oO][rR]|[fF][oO][rR][eE][aA][cC][hH]|[sS][wW][iI][tT][cC][hH]|[eE][nN][dD][iI][fF]|[cC][aA][tT][cC][hH]|[tT][rR][yY]
 CTRB	[rR][eE][tT][uU][rR][nN]|[dD][oO]|[cC][aA][sS][eE]|[bB][rR][eE][aA][kK]|[gG][oO][tT][oO]|[eE][lL][sS][eE]|[iI][nN][cC][lL][uU][dD][eE]|[iI][nN][cC][lL][uU][dD][eE][_][oO][nN][cC][eE]|[cC][oO][nN][tT][iI][nN][uU][eE]
 ERR		[a-zA-Z_\x7F-\xFF0-9]*
 NAME	[a-zA-Z_\x7F-\xFF][a-zA-Z0-9_]*
@@ -97,7 +97,6 @@ NAME	[a-zA-Z_\x7F-\xFF][a-zA-Z0-9_]*
 [aA][rR][rR][aA][yY]   return RESERVADO;
 [aA][sS]        return RESERVADO;
 [cC][aA][lL][lL][aA][bB][lL][eE]        return RESERVADO;
-[cC][aA][tT][cC][hH]    return RESERVADO;
 [cC][lL][aA][sS][sS]    return RESERVADO;
 [cC][lL][oO][nN][eE]    return RESERVADO;
 [cC][oO][nN][sS][tT]    return RESERVADO;
@@ -111,7 +110,6 @@ NAME	[a-zA-Z_\x7F-\xFF][a-zA-Z0-9_]*
 [eE][nN][dD][dD][eE][cC][lL][aA][rR][eE]      return RESERVADO;
 [eE][nN][dD][fF][oO][rR]       return RESERVADO;
 [eE][nN][dD][fF][oO][rR][eE][aA][cC][hH]        return RESERVADO;
-[eE][nN][dD][iI][fF]    return RESERVADO;
 [eE][nN][dD][sS][wW][iI][tT][cC][hH]    return RESERVADO;
 [eE][nN][dD][wW][hH][iI][lL][eE]        return RESERVADO;
 [eE][vV][aA][lL]       return RESERVADO;
@@ -123,6 +121,8 @@ NAME	[a-zA-Z_\x7F-\xFF][a-zA-Z0-9_]*
 [gG][lL][oO][bB][aA][lL]        return RESERVADO;
 [iI][mM][pP][lL][eE][mM][eE][nN][tT][sS]        return RESERVADO;
 [iI][nN][sS][tT][aA][nN][cC][eE][oO][fF]       return RESERVADO;
+[iI][nN][cC][lL][uU][dD][eE]    return RESERVADO;
+[iI][nN][cC][lL][uU][dD][eE]_[oO][nN][cC][eE]        return RESERVADO;
 [iI][nN][sS][tT][eE][aA][dD][oO][fF]    return RESERVADO;
 [iI][nN][tT][eE][rR][fF][aA][cC][eE]    return RESERVADO;
 [iI][sS][sS][eE][tT]    return RESERVADO;
@@ -138,10 +138,10 @@ NAME	[a-zA-Z_\x7F-\xFF][a-zA-Z0-9_]*
 [sS][wW][iI][tT][cC][hH]       return RESERVADO;
 [tT][hH][rR][oO][wW]    return RESERVADO;
 [tT][rR][aA][iI][tT]    return RESERVADO;
-[tT][rR][yY]    return RESERVADO;
 [uU][nN][sS][eE][tT]    return RESERVADO;
 [uU][sS][eE]    return RESERVADO;
 [vV][aA][rR]    return RESERVADO;
+[vV][oO][iI][dD]	return RESERVADO;
 [yY][iI][eE][lL][dD]    return RESERVADO;
 {STC}	return TIPO;
 {CTRA} 	return CONTROL;
@@ -156,7 +156,7 @@ NAME	[a-zA-Z_\x7F-\xFF][a-zA-Z0-9_]*
 \"{ALL}\"|\'{ALL}\'	return TEXTO;
 {NAME}	return PROPIEDAD;
 "['"{NAME}"']"	return BD;
-"$"[0-9][a-zA-Z0-9_]*|"$"	return ERROR;
+"$"^[a-zA-Z_\x7F-\xFF][a-zA-Z0-9_\x7F-\xFF]*|"$"	return ERROR;
 {ERR}	return ERROR;
 %%
 int yywrap(void)

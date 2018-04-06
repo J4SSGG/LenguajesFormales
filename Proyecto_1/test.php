@@ -1,5 +1,0 @@
-WHILE($ROW = MYSQL_FETCH_ASSOC($RECORDSETNAME)) {
-    IF($ROW['FIELDNAME'] != '') {
-        ECHO '<LI><A HREF="#">CONTENT GOES HERE</A></LI>';
-    }
-}

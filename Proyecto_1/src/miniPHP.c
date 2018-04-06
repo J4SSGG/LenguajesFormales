@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
-#include "wrap.h"
+#include "miniPHP.h"
 #include "LinkedList.c"
 
 
@@ -103,9 +103,11 @@ int main(int ac, char ** av) {
 
 	// Write php file ...
 	
-	char * newName = malloc(strlen(av[1]+1));
-	strcpy(newName, "_");
-	strcat(newName, av[1]);
+	char * newName = malloc(strlen(av[1]));
+	strcpy(newName, av[1]);
+	newName[strlen(av[1])-3] = 'o';
+	newName[strlen(av[1])-2] = 'u';
+	newName[strlen(av[1])-1] = 't';
 
 	FILE * fd;
 	if (!(fd = fopen(newName, "wb")))

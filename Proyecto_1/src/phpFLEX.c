@@ -1,5 +1,6 @@
+#line 2 "src/phpFLEX.c"
 
-#line 3 "lex.yy.c"
+#line 4 "src/phpFLEX.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -1134,10 +1135,10 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "php.l"
-#line 2 "php.l"
-#include "wrap.h"
-#line 1141 "lex.yy.c"
+#line 1 "src/phpFLEX.l"
+#line 2 "src/phpFLEX.l"
+#include "miniPHP.h"
+#line 1142 "src/phpFLEX.c"
 
 #define INITIAL 0
 
@@ -1355,9 +1356,9 @@ YY_DECL
 		}
 
 	{
-#line 21 "php.l"
+#line 21 "src/phpFLEX.l"
 
-#line 1361 "lex.yy.c"
+#line 1362 "src/phpFLEX.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -1416,702 +1417,702 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 22 "php.l"
+#line 22 "src/phpFLEX.l"
 return CONTROL;
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 23 "php.l"
+#line 23 "src/phpFLEX.l"
 return CONTROL;
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 24 "php.l"
+#line 24 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 25 "php.l"
+#line 25 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 26 "php.l"
+#line 26 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 27 "php.l"
+#line 27 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 28 "php.l"
+#line 28 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 29 "php.l"
+#line 29 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 30 "php.l"
+#line 30 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 31 "php.l"
+#line 31 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 32 "php.l"
+#line 32 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 33 "php.l"
+#line 33 "src/phpFLEX.l"
 return IDENTIFICADOR;
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 34 "php.l"
+#line 34 "src/phpFLEX.l"
 return IDENTIFICADOR;
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 35 "php.l"
+#line 35 "src/phpFLEX.l"
 return IDENTIFICADOR;
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 36 "php.l"
+#line 36 "src/phpFLEX.l"
 return IDENTIFICADOR;
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 37 "php.l"
+#line 37 "src/phpFLEX.l"
 return IDENTIFICADOR;
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 38 "php.l"
+#line 38 "src/phpFLEX.l"
 return COMENTARIO;
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 39 "php.l"
+#line 39 "src/phpFLEX.l"
 return COMENTARIO;
 	YY_BREAK
 case 19:
 /* rule 19 can match eol */
 YY_RULE_SETUP
-#line 40 "php.l"
+#line 40 "src/phpFLEX.l"
 return COMENTARIO;
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 41 "php.l"
+#line 41 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 42 "php.l"
+#line 42 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 43 "php.l"
+#line 43 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 44 "php.l"
+#line 44 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 45 "php.l"
+#line 45 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 46 "php.l"
+#line 46 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 47 "php.l"
+#line 47 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 48 "php.l"
+#line 48 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 49 "php.l"
+#line 49 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 50 "php.l"
+#line 50 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 51 "php.l"
+#line 51 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 52 "php.l"
+#line 52 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 53 "php.l"
+#line 53 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 54 "php.l"
+#line 54 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 55 "php.l"
+#line 55 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 56 "php.l"
+#line 56 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 57 "php.l"
+#line 57 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 58 "php.l"
+#line 58 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 59 "php.l"
+#line 59 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 60 "php.l"
+#line 60 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 61 "php.l"
+#line 61 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 62 "php.l"
+#line 62 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 63 "php.l"
+#line 63 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 64 "php.l"
+#line 64 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 65 "php.l"
+#line 65 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 66 "php.l"
+#line 66 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 67 "php.l"
+#line 67 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 68 "php.l"
+#line 68 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 69 "php.l"
+#line 69 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 70 "php.l"
+#line 70 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 71 "php.l"
+#line 71 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 72 "php.l"
+#line 72 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 73 "php.l"
+#line 73 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 74 "php.l"
+#line 74 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 75 "php.l"
+#line 75 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 76 "php.l"
+#line 76 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 77 "php.l"
+#line 77 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 78 "php.l"
+#line 78 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 79 "php.l"
+#line 79 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 80 "php.l"
+#line 80 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 81 "php.l"
+#line 81 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 82 "php.l"
+#line 82 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 83 "php.l"
+#line 83 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 84 "php.l"
+#line 84 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 85 "php.l"
+#line 85 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 86 "php.l"
+#line 86 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 87 "php.l"
+#line 87 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 88 "php.l"
+#line 88 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 89 "php.l"
+#line 89 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 90 "php.l"
+#line 90 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 91 "php.l"
+#line 91 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 92 "php.l"
+#line 92 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 93 "php.l"
+#line 93 "src/phpFLEX.l"
 return PREDETERMINADO;
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 94 "php.l"
+#line 94 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 95 "php.l"
+#line 95 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 96 "php.l"
+#line 96 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 97 "php.l"
+#line 97 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 98 "php.l"
+#line 98 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 99 "php.l"
+#line 99 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 100 "php.l"
+#line 100 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 101 "php.l"
+#line 101 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 102 "php.l"
+#line 102 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 103 "php.l"
+#line 103 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 104 "php.l"
+#line 104 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 105 "php.l"
+#line 105 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 106 "php.l"
+#line 106 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 107 "php.l"
+#line 107 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 87:
 YY_RULE_SETUP
-#line 108 "php.l"
+#line 108 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 88:
 YY_RULE_SETUP
-#line 109 "php.l"
+#line 109 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-#line 110 "php.l"
+#line 110 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 111 "php.l"
+#line 111 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
-#line 112 "php.l"
+#line 112 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 92:
 YY_RULE_SETUP
-#line 113 "php.l"
+#line 113 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 114 "php.l"
+#line 114 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 94:
 YY_RULE_SETUP
-#line 115 "php.l"
+#line 115 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
-#line 116 "php.l"
+#line 116 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 96:
 YY_RULE_SETUP
-#line 117 "php.l"
+#line 117 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 97:
 YY_RULE_SETUP
-#line 118 "php.l"
+#line 118 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 98:
 YY_RULE_SETUP
-#line 119 "php.l"
+#line 119 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 99:
 YY_RULE_SETUP
-#line 120 "php.l"
+#line 120 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 100:
 YY_RULE_SETUP
-#line 121 "php.l"
+#line 121 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 101:
 YY_RULE_SETUP
-#line 122 "php.l"
+#line 122 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 102:
 YY_RULE_SETUP
-#line 123 "php.l"
+#line 123 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 103:
 YY_RULE_SETUP
-#line 124 "php.l"
+#line 124 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 104:
 YY_RULE_SETUP
-#line 125 "php.l"
+#line 125 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 105:
 YY_RULE_SETUP
-#line 126 "php.l"
+#line 126 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 106:
 YY_RULE_SETUP
-#line 127 "php.l"
+#line 127 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 107:
 YY_RULE_SETUP
-#line 128 "php.l"
+#line 128 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 108:
 YY_RULE_SETUP
-#line 129 "php.l"
+#line 129 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 109:
 YY_RULE_SETUP
-#line 130 "php.l"
+#line 130 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 110:
 YY_RULE_SETUP
-#line 131 "php.l"
+#line 131 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 111:
 YY_RULE_SETUP
-#line 132 "php.l"
+#line 132 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 112:
 YY_RULE_SETUP
-#line 133 "php.l"
+#line 133 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 113:
 YY_RULE_SETUP
-#line 134 "php.l"
+#line 134 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 114:
 YY_RULE_SETUP
-#line 135 "php.l"
+#line 135 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 115:
 YY_RULE_SETUP
-#line 136 "php.l"
+#line 136 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 116:
 YY_RULE_SETUP
-#line 137 "php.l"
+#line 137 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 117:
 YY_RULE_SETUP
-#line 138 "php.l"
+#line 138 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 118:
 YY_RULE_SETUP
-#line 139 "php.l"
+#line 139 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 119:
 YY_RULE_SETUP
-#line 140 "php.l"
+#line 140 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 120:
 YY_RULE_SETUP
-#line 141 "php.l"
+#line 141 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 121:
 YY_RULE_SETUP
-#line 142 "php.l"
+#line 142 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 122:
 YY_RULE_SETUP
-#line 143 "php.l"
+#line 143 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 123:
 YY_RULE_SETUP
-#line 144 "php.l"
+#line 144 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 124:
 YY_RULE_SETUP
-#line 145 "php.l"
+#line 145 "src/phpFLEX.l"
 return TIPO;
 	YY_BREAK
 case 125:
 YY_RULE_SETUP
-#line 146 "php.l"
+#line 146 "src/phpFLEX.l"
 return CONTROL;
 	YY_BREAK
 case 126:
 YY_RULE_SETUP
-#line 147 "php.l"
+#line 147 "src/phpFLEX.l"
 return RESERVADO;
 	YY_BREAK
 case 127:
 YY_RULE_SETUP
-#line 148 "php.l"
+#line 148 "src/phpFLEX.l"
 return VARIABLE;
 	YY_BREAK
 case 128:
 YY_RULE_SETUP
-#line 149 "php.l"
+#line 149 "src/phpFLEX.l"
 return OPERADOR;
 	YY_BREAK
 case 129:
 YY_RULE_SETUP
-#line 150 "php.l"
+#line 150 "src/phpFLEX.l"
 return OPERADOR;
 	YY_BREAK
 case 130:
 YY_RULE_SETUP
-#line 151 "php.l"
+#line 151 "src/phpFLEX.l"
 return OPERADOR;
 	YY_BREAK
 case 131:
 /* rule 131 can match eol */
 YY_RULE_SETUP
-#line 152 "php.l"
+#line 152 "src/phpFLEX.l"
 return NWL;
 	YY_BREAK
 case 132:
 YY_RULE_SETUP
-#line 153 "php.l"
+#line 153 "src/phpFLEX.l"
 return ESP;
 	YY_BREAK
 case 133:
 YY_RULE_SETUP
-#line 154 "php.l"
+#line 154 "src/phpFLEX.l"
 return VALOR;
 	YY_BREAK
 case 134:
 YY_RULE_SETUP
-#line 155 "php.l"
+#line 155 "src/phpFLEX.l"
 return TEXTO;
 	YY_BREAK
 case 135:
 YY_RULE_SETUP
-#line 156 "php.l"
+#line 156 "src/phpFLEX.l"
 return PROPIEDAD;
 	YY_BREAK
 case 136:
 YY_RULE_SETUP
-#line 157 "php.l"
+#line 157 "src/phpFLEX.l"
 return BD;
 	YY_BREAK
 case 137:
 YY_RULE_SETUP
-#line 158 "php.l"
+#line 158 "src/phpFLEX.l"
 return ERROR;
 	YY_BREAK
 case 138:
 YY_RULE_SETUP
-#line 159 "php.l"
+#line 159 "src/phpFLEX.l"
 return ERROR;
 	YY_BREAK
 case 139:
 YY_RULE_SETUP
-#line 160 "php.l"
+#line 160 "src/phpFLEX.l"
 ECHO;
 	YY_BREAK
-#line 2115 "lex.yy.c"
+#line 2116 "src/phpFLEX.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -3112,7 +3113,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 160 "php.l"
+#line 160 "src/phpFLEX.l"
 
 
 int yywrap(void)

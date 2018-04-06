@@ -1,5 +1,5 @@
 %{
-#include "wrap.h"
+#include "miniPHP.h"
 %}
 ALL		.*
 ESP		[ \t\r]+

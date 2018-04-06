@@ -1,0 +1,57 @@
+Las siguientes expresiones regulares son de proposito general. Debido a que estas
+son utilizadas o llamadas en varias otras expresiones regulares, es óptimo definirlas
+"globalmente". La etiqueta en mayúsculas da una idea rápida de la función de dicha 
+expresión regular.
+
+ALL		.*
+ESP		[ \t\r]+
+NWL		[\n]*
+VAR		"$"[a-zA-Z_\x7F-\xFF][a-zA-Z0-9_]*
+INT		"+-"*[0-9]+
+DEC		"+-"*[0-9]*"."[0-9]*
+BOOL	[tT][rR][uU][eE]|[fF][aA][lL][sS][eE]
+INIT	"<?"[pP][hH][pP]
+END		"?>"
+OPA		"="|"+"|"-"|"*"|"/"|"%"|"<"|">"|"<="|">="|"<>"|"=="|"==="|"!=="|"!="|"."|"&&"|\|\||[aA][nN][dD]|[oO][rR]|[xX][oO][rR]|"+="|"-="|"*="|"/="|".="|"&"|"!"
+OPB		"++"|"--"|"=>"|"->"|"@"
+PTS		"("|")"|"{"|"}"|";"|","|"["|"]"|"?"|":"|";"
+STC		[dD][oO][uU][bB][lL][eE]|[iI][nN][tT]|[sS][tT][rR][iI][nN][gG]|[fF][lL][oO][aA][tT]|[bB][oO][oO][lL]
+CTRA	[iI][fF]|[eE][lL][sS][eE][_][iI][fF]|[eE][lL][sS][eE][iI][fF]|[wW][hH][iI][lL][eE]|[fF][oO][rR]|[fF][oO][rR][eE][aA][cC][hH]|[sS][wW][iI][tT][cC][hH]
+CTRB	[rR][eE][tT][uU][rR][nN]|[dD][oO]|[cC][aA][sS][eE]|[bB][rR][eE][aA][kK]|[gG][oO][tT][oO]|[eE][lL][sS][eE]|[iI][nN][cC][lL][uU][dD][eE]|[iI][nN][cC][lL][uU][dD][eE][_][oO][nN][cC][eE]|[cC][oO][nN][tT][iI][nN][uU][eE]
+ERR		[a-zA-Z_\x7F-\xFF0-9]*
+NAME	[a-zA-Z_\x7F-\xFF][a-zA-Z0-9_]*
+
+
+Nótese que para todas las palabras reservadas, variables, constantes, y demás elementos predefinidos en 
+PHP, la forma de su expresion regular siempre será equivalente al siguiente ejemplo para cada elemento 
+respectivamente:
+
+        Palabra reservada:      default
+        Expresión regular:      [dD][eE][fF][aA][uU][lL][tT]
+
+        Estructura de control:  while
+        Expresión regular:      [wW][hH][iI][lL][eE]
+            .
+            .
+            .
+
+Los comentarios son expresiones regulares complejas de evaluar dada su naturaleza "de absorber demasiado".
+Así, por ejemplo, la siguiente porción de código dada la expresión regular es evaluada como comentario:
+
+        Expresión regular:      "/*".*"*/"
+        Input:                  /* Este es un comentario */ foo(); /* Este es un comentario */
+        Output:                 Comentario -> /* Este es un comentario */ foo(); /* Este es un comentario */
+
+Por tanto la expresión regular para evaluar comentarios, principalmente multilínea, se convierte en algo similar
+a la siguiente expresión regular, que evalúa correctamente la misma entrada:
+
+        Expresión regular:      "/*"([^*]|(\*+[^*/]))*\*+\/ 
+        Input:                  /* Este es un comentario */ foo(); /* Este es un comentario */
+        Output:                 Comentario ->       /* Este es un comentario */
+                                Función ->          foo();
+                                Comentario ->       /* Este es un comentario */
+
+Similar a los comentarios, las expresiones regulares para definir strings dentro de PHP son bastante "absorbentes".
+Sin embargo, la siguientes expresión regular evalúa, generalmente, de forma correcta los strings:
+
+        Expresión regular:      \"{ALL}\"|\'{ALL}\'

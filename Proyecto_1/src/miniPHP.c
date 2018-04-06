@@ -39,6 +39,22 @@ int main(int ac, char ** av) {
 	// This loop iterates over every line read from the file, pass the line content to flex, and catch the outputs.
 	while (value) {
 		token++;
+		if (token == 1){
+			if (value == INIT){
+				printf("Valid PHP file.\n");
+				printf("Line %d >	  Control  :		%s\n", yylineno, "<?php");
+				insertFirst(token, "<?php\n");
+			}else{
+				printf("Not valid PHP file.\n");
+				printf("ERROR IN LINE %d  ->  %s: File must start with '<?php'\n", yylineno, yytext);
+				hasError = 1;
+				fe = fopen(errorFile, "a");
+				fprintf(fe, "ERROR IN LINE %d  ->  %s: File must start with '<?php'\n", yylineno, yytext);
+				fclose(fe);
+				value = 0;
+				continue;
+			}
+		}
 		switch (value){
 			case VARIABLE:
 				printf("Line %d >	  Variable :		%s\n", yylineno, yytext);

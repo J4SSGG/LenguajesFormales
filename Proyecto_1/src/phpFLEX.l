@@ -20,7 +20,7 @@ CTRB	[rR][eE][tT][uU][rR][nN]|[dD][oO]|[cC][aA][sS][eE]|[bB][rR][eE][aA][kK]|[gG
 ERR		[a-zA-Z_\x7F-\xFF0-9]*
 NAME	[a-zA-Z_\x7F-\xFF][a-zA-Z0-9_]*
 %%
-{INIT}	return CONTROL;
+({ESP}|{NWL})*{INIT}	return INIT;
 {END}	return CONTROL;
 "$_"[gG][lL][oO][bB][aA][lL][sS]    return PREDETERMINADO;
 "$_"[sS][eE][rR][vV][eE][rR]        return PREDETERMINADO;

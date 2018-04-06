@@ -13,6 +13,7 @@
 #define VALOR 13
 #define PROPIEDAD 14
 #define BD 15
+#define INIT 16
 
 extern int yylex();
 extern int yylineno;

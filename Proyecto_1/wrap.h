@@ -11,6 +11,8 @@
 #define NWL 11
 #define ESP 12
 #define VALOR 13
+#define PROPIEDAD 14
+#define BD 15
 
 extern int yylex();
 extern int line;

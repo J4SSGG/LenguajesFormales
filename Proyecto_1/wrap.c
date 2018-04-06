@@ -23,7 +23,6 @@ int main(int ac, char ** av) {
 	// Some control variables..
 	int value = yylex(); // value (or token if applicable) returned by flex
 	int line = 0; // input-lines counter
-
 	// This loop iterates over every line read from the file, pass the line content to flex, and catch the outputs.
 	while (value) {
 		line++;
@@ -61,11 +60,12 @@ int main(int ac, char ** av) {
 				insertFirst(line, yytext);
 				break;
 			case CONTROL:
+				ToLowerCase(yytext);
 				printf("Line %d >	  Control :		%s\n", line, yytext);
 				insertFirst(line, yytext);
 				break;
 			case ERROR:
-				printf("Line %d >	  Error :		%s\n", line, yytext);
+				printf("ERROR IN LINE %d  ->  %s\n", line, yytext);
 				insertFirst(line, yytext);
 				break;
 			case TEXTO:
@@ -85,16 +85,25 @@ int main(int ac, char ** av) {
 				printf("Line %d >	  Valor  :		%s\n", line, yytext);
 				insertFirst(line, yytext);
 				break;
+			case PROPIEDAD:
+				printf("Line %d >	  Propiedad  :		%s\n", line, yytext);
+				insertFirst(line, yytext);
+				break;
+			case BD:
+				ToUpperCase(yytext);
+				printf("Line %d >	  Database  :		%s\n", line, yytext);
+				insertFirst(line, yytext);
+				break;
 		}
 		
 		value = yylex();
 	}
 	reverse(&head);
-	printList();
+	//printList();
 
 	// Write php file ...
 	
-	char * newName = malloc(strlen(av[1]+2));
+	char * newName = malloc(strlen(av[1]+1));
 	strcpy(newName, "_");
 	strcat(newName, av[1]);
 

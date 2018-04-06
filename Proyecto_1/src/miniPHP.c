@@ -22,85 +22,84 @@ int main(int ac, char ** av) {
 
 	// Some control variables..
 	int value = yylex(); // value (or token if applicable) returned by flex
-	int line = 0; // input-lines counter
+	int token = 0; // input-lines counter
 	// This loop iterates over every line read from the file, pass the line content to flex, and catch the outputs.
 	while (value) {
-		line++;
+		token++;
 		switch (value){
 			case VARIABLE:
-				printf("Line %d >	  Variable :		%s\n", line, yytext);
-				insertFirst(line, yytext);
+				printf("Line %d >	  Variable :		%s\n", yylineno, yytext);
+				insertFirst(token, yytext);
 				break;
 			case RESERVADO:
 				ToLowerCase(yytext);
-				printf("Line %d >	  Reservado :		%s\n", line, yytext);
-				insertFirst(line, yytext);
+				printf("Line %d >	  Reservado :		%s\n", yylineno, yytext);
+				insertFirst(token, yytext);
 				break;
 			case COMENTARIO:
-				printf("Line %d >	  Comentario :		%s\n", line, yytext);
-				insertFirst(line, yytext);
+				printf("Line %d >	  Comentario :		%s\n", yylineno, yytext);
+				insertFirst(token, yytext);
 				break;
 			case PREDETERMINADO:
 				ToUpperCase(yytext);
-				printf("Line %d >	  Predeterminado :		%s\n", line, yytext);
-				insertFirst(line, yytext);
+				printf("Line %d >	  Predeterminado :		%s\n", yylineno, yytext);
+				insertFirst(token, yytext);
 				break;
 			case OPERADOR:
-				printf("Line %d >	  Operador :		%s\n", line, yytext);
-				insertFirst(line, yytext);
+				printf("Line %d >	  Operador :		%s\n", yylineno, yytext);
+				insertFirst(token, yytext);
 				break;
 			case TIPO:
 				ToLowerCase(yytext);
-				printf("Line %d >	  Tipo :		%s\n", line, yytext);
-				insertFirst(line, yytext);
+				printf("Line %d >	  Tipo :		%s\n", yylineno, yytext);
+				insertFirst(token, yytext);
 				break;
 			case IDENTIFICADOR:
 				ToLowerCase(yytext);
-				printf("Line %d >	  Identificador :		%s\n", line, yytext);
-				insertFirst(line, yytext);
+				printf("Line %d >	  Identificador :		%s\n", yylineno, yytext);
+				insertFirst(token, yytext);
 				break;
 			case CONTROL:
 				ToLowerCase(yytext);
-				printf("Line %d >	  Control :		%s\n", line, yytext);
-				insertFirst(line, yytext);
+				printf("Line %d >	  Control :		%s\n", yylineno, yytext);
+				insertFirst(token, yytext);
 				break;
 			case ERROR:
-				printf("ERROR IN LINE %d  ->  %s\n", line, yytext);
-				insertFirst(line, yytext);
+				printf("ERROR IN LINE %d  ->  %s\n", yylineno, yytext);
+				insertFirst(token, yytext);
 				break;
 			case TEXTO:
-				printf("Line %d >	  Texto :		%s\n", line, yytext);
-				insertFirst(line, yytext);
+				printf("Line %d >	  Texto :		%s\n", yylineno, yytext);
+				insertFirst(token, yytext);
 				break;
 			case NWL:
-				printf("Line %d >	  Salto de linea ;\n", line);
-				insertFirst(line, "\n");
+				printf("Line %d >	  Salto de linea ;\n", yylineno);
+				insertFirst(token, "\n");
 				break;
 			case ESP:
-				printf("Line %d >	  Espacio ;\n", line);
-				insertFirst(line, " ");
+				printf("Line %d >	  Espacio ;\n", yylineno);
+				insertFirst(token, " ");
 				break;
 			case VALOR:
 				ToLowerCase(yytext);
-				printf("Line %d >	  Valor  :		%s\n", line, yytext);
-				insertFirst(line, yytext);
+				printf("Line %d >	  Valor  :		%s\n", yylineno, yytext);
+				insertFirst(token, yytext);
 				break;
 			case PROPIEDAD:
-				printf("Line %d >	  Propiedad  :		%s\n", line, yytext);
-				insertFirst(line, yytext);
+				printf("Line %d >	  Propiedad  :		%s\n", yylineno, yytext);
+				insertFirst(token, yytext);
 				break;
 			case BD:
 				ToUpperCase(yytext);
-				printf("Line %d >	  Database  :		%s\n", line, yytext);
-				insertFirst(line, yytext);
+				printf("Line %d >	  Database  :		%s\n", yylineno, yytext);
+				insertFirst(token, yytext);
 				break;
 		}
 		
 		value = yylex();
 	}
 	reverse(&head);
-	//printList();
-
+	
 	// Write php file ...
 	
 	char * newName = malloc(strlen(av[1]));
@@ -120,6 +119,7 @@ int main(int ac, char ** av) {
 		fprintf(fd, "%s", find(i)->data);
 	}
 	fclose(fd);
+
 	return 1;
 }
 

@@ -1,6 +1,7 @@
 %{
 #include "miniPHP.h"
 %}
+%option yylineno
 ALL		.*
 ESP		[ \t\r]+
 NWL		[\n]*

@@ -15,7 +15,7 @@
 #define BD 15
 
 extern int yylex();
-extern int line;
+extern int yylineno;
 extern char * yytext;
 extern void yyset_in(FILE * in_str);
 
